@@ -258,14 +258,17 @@ void uploadFile() {
 
 void handleSearchFile(char *fileName, char *listResult){
 	int i;
-	for(i=0;*(listFile+i);i++){
-		char *temp = strdup(listFile[i]);
-		if(strcmp(basename(temp),fileName)==0){
-			strcat(listResult,listFile[i]);
-			strcat(listResult,"\n");
+	if(numberElementsInArray(listFile)>0){
+		for(i=0;*(listFile+i);i++){
+				char *temp = strdup(listFile[i]);
+				if(strcmp(basename(temp),fileName)==0){
+					strcat(listResult,listFile[i]);
+					strcat(listResult,"\n");
+				}
+				free(temp);
 		}
-		free(temp);
 	}
+	
 }
 
 /*
